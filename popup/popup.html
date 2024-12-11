@@ -1,0 +1,130 @@
+<!-- popup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Highlight Keeper</title>
+  <link rel="stylesheet" href="popup.css">
+  <!-- Use a modern icon library or your own SVGs/PNGs -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-sticky-note"></i> Highlight Keeper</h1>
+    </header>
+    
+    <section class="toolbar">
+      <div class="search-bar">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="searchInput" placeholder="Search notes...">
+      </div>
+      
+      <div class="tags-filter">
+        <i class="fas fa-tags"></i>
+        <select id="tagsSelect">
+          <option value="">All Tags</option>
+          <!-- Dynamically populated -->
+        </select>
+      </div>
+    </section>
+
+    <section class="sort-options">
+      <label for="sortSelect">Sort by:</label>
+      <select id="sortSelect">
+        <option value="date-desc">Newest First</option>
+        <option value="date-asc">Oldest First</option>
+        <option value="title">Title</option>
+      </select>
+    </section>
+
+    <section class="notes-list" id="notesList">
+      <!-- Notes will be dynamically populated here -->
+      <div class="empty-state" id="emptyState">
+        <i class="fas fa-book-open"></i>
+        <p>No notes yet. Start by highlighting text on any webpage!</p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="add-note">
+        <button id="addNoteBtn">
+          <i class="fas fa-plus"></i> Add New Note
+        </button>
+      </div>
+      
+      <div class="sync-section">
+        <button id="exportBtn" title="Export Notes">
+          <i class="fas fa-file-export"></i>
+        </button>
+        <button id="importBtn" title="Import Notes (Coming Soon)" disabled style="display: none;">
+            <i class="fas fa-file-import"></i> Import Notes
+          </button>
+        <button id="syncGoogleBtn" title="Sync with Google Drive" style="display: none;">
+          <i class="fab fa-google-drive"></i>
+        </button>
+        <button id="syncNotionBtn" title="Sync with Notion" style="display: none;">
+          <i class="fab fa-notion"></i>
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Add/Edit Note Modal -->
+  <div id="noteModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modalTitle">Add Note</h2>
+      <form id="noteForm">
+        <div class="form-group">
+          <label for="noteTitle">Title:</label>
+          <input type="text" id="noteTitle" placeholder="Enter a title">
+        </div>
+
+        <div class="form-group">
+          <label for="noteText">Note:</label>
+          <textarea id="noteText" required placeholder="Enter your note"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="noteTags">Tags:</label>
+          <input type="text" id="noteTags" placeholder="Add tags (comma separated)">
+          <div class="tags-preview" id="tagsPreview"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="noteUrl">Source URL:</label>
+          <input type="text" id="noteUrl" readonly>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" id="cancelBtn">Cancel</button>
+          <button type="submit" id="saveBtn">Save Note</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- View Note Modal -->
+  <div id="viewNoteModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="viewModalClose">&times;</span>
+      <h2>View Note</h2>
+      <div class="view-note-content">
+        <h3 id="viewNoteTitle"></h3>
+        <p id="viewNoteText"></p>
+        <div class="view-note-tags" id="viewNoteTags"></div>
+      </div>
+      <div class="form-actions">
+        <button id="closeViewBtn">Close</button>
+        <button id="copyNoteBtn"><i class="fas fa-copy"></i> Copy to Clipboard</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
