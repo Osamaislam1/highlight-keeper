@@ -47,7 +47,7 @@ class HighlightManager {
         button.title = 'Save to Quick Notes';
     
         // Position the button
-        const buttonSize = 32; // in pixels
+        const buttonSize = 12; // in pixels
         let top = rect.top + window.scrollY - buttonSize - 5; // 5px above selection
         let left = rect.left + window.scrollX + rect.width / 2 - buttonSize / 2;
     
