@@ -60,4 +60,4 @@
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/YourUsername/Highlight-Keeper.git
+   git clone https://github.com/Osamaislam1/highlight-keeper.git
