@@ -1,7 +1,5 @@
 # Highlight Keeper
 
-![Highlight Keeper Logo](icons/icon16.png)
-
 **Highlight Keeper** is a lightweight and intuitive Chrome extension designed to help you effortlessly highlight, save, and organize important text from any webpage. Whether you're conducting research, reading articles, or managing online content, Highlight Keeper ensures your key information is always at your fingertips.
 
 ---
